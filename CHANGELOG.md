@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.2.2](https://github.com/navio-dk/errors/compare/v2.2.1...v2.2.2) (2025-10-13)
+
+
+### Bug Fixes
+
+* update dependencies for @navio-dk/ts-utils and @navio-dk/dev-env to latest versions ([34dfbc5](https://github.com/navio-dk/errors/commit/34dfbc56c0e26f376f378f8fb6e0bc61e9ab4520))
+
 ## [2.2.1](https://github.com/navio-dk/errors/compare/v2.2.0...v2.2.1) (2025-10-13)
 
 
