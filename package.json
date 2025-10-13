@@ -17,10 +17,10 @@
   "module": "./index.ts",
   "dependencies": {
     "consola": "^3.2.3",
-    "@navio-dk/ts-utils": "github:navio-dk/ts-utils#v1.1.0"
+    "@navio-dk/ts-utils": "github:navio-dk/ts-utils#v1.5.0"
   },
   "devDependencies": {
-    "@navio-dk/dev-env": "github:navio-dk/dev-env#v3.0.0-11"
+    "@navio-dk/dev-env": "github:navio-dk/dev-env#v3.1.0"
   },
   "peerDependencies": {
     "elysia": "^1.1.23"
