@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.2.1](https://github.com/navio-dk/errors/compare/v2.2.0...v2.2.1) (2025-10-13)
+
+
+### Bug Fixes
+
+* update package references from Nomad-Solutions to navio-dk ([6a68e6c](https://github.com/navio-dk/errors/commit/6a68e6cf130d523503fafef96092b0140d946761))
+
 ## [2.2.0](https://github.com/navio-dk/errors/compare/v2.1.1...v2.2.0) (2025-02-17)
 
 
