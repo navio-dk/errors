@@ -1,5 +1,5 @@
 {
-  "extends": "https://raw.githubusercontent.com/Nomad-Solutions/dev-env/refs/tags/v3.0.0-11/vscode/base.json",
+  "extends": "https://raw.githubusercontent.com/navio-dk/dev-env/refs/tags/v3.0.0-11/vscode/base.json",
   "root": true,
   "settings": {}
 }

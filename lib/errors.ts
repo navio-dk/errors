@@ -50,6 +50,13 @@ export class AuthenticationError extends HttpError {
 	httpDescription = HttpResponse.Unauthorized.description;
 }
 
+export class InternalServerError extends HttpError {
+	name = 'InternalServerError' as const;
+	statusCode = HttpResponse.InternalServerError.code;
+	httpName = HttpResponse.InternalServerError.name;
+	httpDescription = HttpResponse.InternalServerError.description;
+}
+
 export abstract class InitializationError extends Error {}
 
 export class MissingEnvironmentVariableError extends InitializationError {

@@ -1,3 +1,3 @@
-import eslintConfig from '@nomad-solutions/dev-env/lint-staged/eslint';
+import eslintConfig from '@navio-dk/dev-env/lint-staged/eslint';
 
 export default eslintConfig;

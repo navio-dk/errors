@@ -1,5 +1,5 @@
 {
-	"extends": "@nomad-solutions/dev-env/tsconfig/base",
+	"extends": "@navio-dk/dev-env/tsconfig/base",
 	"compilerOptions": {
 		"outDir": "dist",
 		"paths": {

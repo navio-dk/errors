@@ -1,3 +1,3 @@
 export default { 
-	extends: [ '@nomad-solutions/dev-env/commitlint' ],
+	extends: [ '@navio-dk/dev-env/commitlint' ],
 };

@@ -7,7 +7,7 @@ import {
 	isErrorOfType,
 	isHttpError,
 } from './assertions';
-import type { NonEmptyArray, ArrayElement } from '@nomad-solutions/ts-utils';
+import type { NonEmptyArray, ArrayElement } from '@navio-dk/ts-utils';
 import type { ValidationError } from 'elysia';
 
 const consolaNoDate = createConsola({

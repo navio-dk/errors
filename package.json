@@ -1,5 +1,5 @@
 {
-  "name": "@nomad-solutions/errors",
+  "name": "@navio-dk/errors",
   "version": "2.2.0",
   "type": "module",
   "scripts": {
@@ -17,17 +17,17 @@
   "module": "./index.ts",
   "dependencies": {
     "consola": "^3.2.3",
-    "@nomad-solutions/ts-utils": "github:Nomad-Solutions/ts-utils#v1.1.0"
+    "@navio-dk/ts-utils": "github:navio-dk/ts-utils#v1.1.0"
   },
   "devDependencies": {
-    "@nomad-solutions/dev-env": "github:Nomad-Solutions/dev-env#v3.0.0-11"
+    "@navio-dk/dev-env": "github:navio-dk/dev-env#v3.0.0-11"
   },
   "peerDependencies": {
     "elysia": "^1.1.23"
   },
   "trustedDependencies": [
-    "@nomad-solutions/dev-env",
-    "@nomad-solutions/ts-utils",
+    "@navio-dk/dev-env",
+    "@navio-dk/ts-utils",
     "esbuild",
     "husky"
   ]

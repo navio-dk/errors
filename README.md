@@ -1,4 +1,4 @@
-# Nomad Solutions Errors
+# Navio Errors
 An opinionated collection of error types and utilities for error handling in typescript with Elysia.
 
 ## Mantra
@@ -16,8 +16,8 @@ Add this repository as a dependency in your `package.json`:
 // package.json
 {
 	"dependencies": {
-		"@nomad-solutions/errors": "github:Nomad-Solutions/errors#v1.0.0", // specific tag (recommended)
-		"@nomad-solutions/errors": "github:Nomad-Solutions/errors" // latest commit
+		"@navio-dk/errors": "github:navio-dk/errors#v1.0.0", // specific tag (recommended)
+		"@navio-dk/errors": "github:navio-dk/errors" // latest commit
 	}
 }
 ```
@@ -28,8 +28,8 @@ Add this repository as a dependency in your `package.json`:
 In Elysia, you will need to set up the following snippets somewhere in your Elysia app before your routes handlers are defined:
 
 ```typescript
-import { onError } from '@nomad-solutions/errors';
-import * as errors from '@nomad-solutions/errors/errors';
+import { onError } from '@navio-dk/errors';
+import * as errors from '@navio-dk/errors/errors';
 
 const app = new Elysia()
 	// ...
@@ -56,7 +56,7 @@ When developing on this package, it might be beneficial to see how changes inter
 
 **TLDR**:
 1. Execute `bun link` from the root of this repository.
-2. Execute `bun link @nomad-solutions/errors` in the root of your application.
+2. Execute `bun link @navio-dk/errors` in the root of your application.
 
 This package should now be usable in your application (see [Usage section](#usage)), and updates to this package will be reflected instantly in your application (by the magic of symlinks).
 
