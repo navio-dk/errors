@@ -1,9 +1,20 @@
 import type { ValidationError } from 'elysia';
-import type { InitializationError } from './errors';
-import { HttpError } from './errors';
+import {
+	InitializationError,
+	JSONLoggableError,
+	HttpError
+} from './errors';
 
 export function isError(error: unknown): error is Error {
 	return error instanceof Error;
+}
+
+export function isJSONLoggableError(error: unknown): error is JSONLoggableError {
+	return error instanceof JSONLoggableError;
+}
+
+export function hasDetails(error: unknown): error is JSONLoggableError & { details: NonNullable<JSONLoggableError['details']> } {
+	return error instanceof JSONLoggableError && error.details !== undefined;
 }
 
 export function isHttpError(error: unknown): error is HttpError {
@@ -15,7 +26,7 @@ export function isElysiaValidationError(error: unknown): error is ValidationErro
 }
 
 export function isInitializationError(error: unknown): error is InitializationError {
-	return error instanceof isInitializationError;
+	return error instanceof InitializationError;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any -- this is how Error is actually typed

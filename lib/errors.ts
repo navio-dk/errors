@@ -1,17 +1,33 @@
 import { HttpResponse, type HttpCode } from './http-responses';
 import { formatErrorMessage } from './utils';
+import type { Jsonifiable } from '@navio-dk/ts-utils';
 
-export abstract class HttpError extends Error {
+export abstract class JSONLoggableError extends Error {
+	// details are not readonly, if we for some reason want to catch and add details, the re-throw etc.
+	details?: Jsonifiable;
+
+	constructor(message?: string, ctx?: {
+		cause?: unknown;
+		details?: Jsonifiable
+	}) {
+		super(message, { cause: ctx?.cause });
+
+		this.details = ctx?.details;
+	}
+
+	// By default, JSON.stringify will escape newlines in strings and create a string with no newlines, which makes it work with log scrapers such as Loki
+	get formattedDetails() {
+		return JSON.stringify(this.details);
+	}
+}
+
+export abstract class HttpError extends JSONLoggableError {
 	abstract readonly statusCode: HttpCode
 	abstract readonly httpName: HttpResponse['name']
 	abstract readonly httpDescription: HttpResponse['description']
 	
 	get httpMessage() {
 		return formatErrorMessage(this.httpName, this.httpDescription);
-	}
-
-	constructor(message?: string, originalError?: unknown) {
-		super(message, { cause: originalError });
 	}
 }
 
