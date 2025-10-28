@@ -20,7 +20,7 @@
     "@navio-dk/ts-utils": "github:navio-dk/ts-utils#v1.5.0"
   },
   "devDependencies": {
-    "@navio-dk/dev-env": "github:navio-dk/dev-env#v3.1.0"
+    "@navio-dk/dev-env": "github:navio-dk/dev-env#v3.1.2"
   },
   "peerDependencies": {
     "elysia": "^1.1.23"
