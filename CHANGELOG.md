@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [3.0.0](https://github.com/Nomad-Solutions/errors/compare/v2.2.2...v3.0.0) (2025-10-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* onError is no longer exported, instead use createErrorHandler
+
+### Features
+
+* add JSON logging ([3e203c5](https://github.com/Nomad-Solutions/errors/commit/3e203c5577f999410eeadbf339f0091420a205bb))
+
 ## [2.2.2](https://github.com/navio-dk/errors/compare/v2.2.1...v2.2.2) (2025-10-13)
 
 
