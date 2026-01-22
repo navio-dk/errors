@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [3.2.0](https://github.com/navio-dk/errors/compare/v3.1.0...v3.2.0) (2026-01-22)
+
+
+### Features
+
+* add more http errors ([7dd1d06](https://github.com/navio-dk/errors/commit/7dd1d06b469288508c567711f6bac8ba7510f52b))
+
 ## [3.1.0](https://github.com/navio-dk/errors/compare/v3.0.0...v3.1.0) (2026-01-22)
 
 
