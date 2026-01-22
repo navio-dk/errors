@@ -29,6 +29,7 @@
     "@navio-dk/dev-env",
     "@navio-dk/ts-utils",
     "esbuild",
-    "husky"
+    "husky",
+    "unrs-resolver"
   ]
 }

@@ -73,6 +73,139 @@ export class InternalServerError extends HttpError {
 	httpDescription = HttpResponse.InternalServerError.description;
 }
 
+export class PaymentRequiredError extends HttpError {
+	name = 'PaymentRequiredError' as const;
+	statusCode = HttpResponse.PaymentRequired.code;
+	httpName = HttpResponse.PaymentRequired.name;
+	httpDescription = HttpResponse.PaymentRequired.description;
+}
+
+export class MethodNotAllowedError extends HttpError {
+	name = 'MethodNotAllowedError' as const;
+	statusCode = HttpResponse.MethodNotAllowed.code;
+	httpName = HttpResponse.MethodNotAllowed.name;
+	httpDescription = HttpResponse.MethodNotAllowed.description;
+}
+
+export class NotAcceptableError extends HttpError {
+	name = 'NotAcceptableError' as const;
+	statusCode = HttpResponse.NotAcceptable.code;
+	httpName = HttpResponse.NotAcceptable.name;
+	httpDescription = HttpResponse.NotAcceptable.description;
+}
+
+export class ProxyAuthenticationRequiredError extends HttpError {
+	name = 'ProxyAuthenticationRequiredError' as const;
+	statusCode = HttpResponse.ProxyAuthenticationRequired.code;
+	httpName = HttpResponse.ProxyAuthenticationRequired.name;
+	httpDescription = HttpResponse.ProxyAuthenticationRequired.description;
+}
+
+export class RequestTimeoutError extends HttpError {
+	name = 'RequestTimeoutError' as const;
+	statusCode = HttpResponse.RequestTimeout.code;
+	httpName = HttpResponse.RequestTimeout.name;
+	httpDescription = HttpResponse.RequestTimeout.description;
+}
+
+export class GoneError extends HttpError {
+	name = 'GoneError' as const;
+	statusCode = HttpResponse.Gone.code;
+	httpName = HttpResponse.Gone.name;
+	httpDescription = HttpResponse.Gone.description;
+}
+
+export class LengthRequiredError extends HttpError {
+	name = 'LengthRequiredError' as const;
+	statusCode = HttpResponse.LengthRequired.code;
+	httpName = HttpResponse.LengthRequired.name;
+	httpDescription = HttpResponse.LengthRequired.description;
+}
+
+export class PreconditionFailedError extends HttpError {
+	name = 'PreconditionFailedError' as const;
+	statusCode = HttpResponse.Precondition.code;
+	httpName = HttpResponse.Precondition.name;
+	httpDescription = HttpResponse.Precondition.description;
+}
+
+export class PayloadTooLargeError extends HttpError {
+	name = 'PayloadTooLargeError' as const;
+	statusCode = HttpResponse.RequestEntityTooLarge.code;
+	httpName = HttpResponse.RequestEntityTooLarge.name;
+	httpDescription = HttpResponse.RequestEntityTooLarge.description;
+}
+
+export class UriTooLongError extends HttpError {
+	name = 'UriTooLongError' as const;
+	statusCode = HttpResponse.RequestUriTooLong.code;
+	httpName = HttpResponse.RequestUriTooLong.name;
+	httpDescription = HttpResponse.RequestUriTooLong.description;
+}
+
+export class UnsupportedMediaTypeError extends HttpError {
+	name = 'UnsupportedMediaTypeError' as const;
+	statusCode = HttpResponse.UnsupportedMediaType.code;
+	httpName = HttpResponse.UnsupportedMediaType.name;
+	httpDescription = HttpResponse.UnsupportedMediaType.description;
+}
+
+export class RangeNotSatisfiableError extends HttpError {
+	name = 'RangeNotSatisfiableError' as const;
+	statusCode = HttpResponse.RequestedRangeNotSatisfiable.code;
+	httpName = HttpResponse.RequestedRangeNotSatisfiable.name;
+	httpDescription = HttpResponse.RequestedRangeNotSatisfiable.description;
+}
+
+export class ExpectationFailedError extends HttpError {
+	name = 'ExpectationFailedError' as const;
+	statusCode = HttpResponse.ExpectationFailed.code;
+	httpName = HttpResponse.ExpectationFailed.name;
+	httpDescription = HttpResponse.ExpectationFailed.description;
+}
+
+export class NotImplementedError extends HttpError {
+	name = 'NotImplementedError' as const;
+	statusCode = HttpResponse.NotImplemented.code;
+	httpName = HttpResponse.NotImplemented.name;
+	httpDescription = HttpResponse.NotImplemented.description;
+}
+
+export class BadGatewayError extends HttpError {
+	name = 'BadGatewayError' as const;
+	statusCode = HttpResponse.BadGateway.code;
+	httpName = HttpResponse.BadGateway.name;
+	httpDescription = HttpResponse.BadGateway.description;
+}
+
+export class ServiceUnavailableError extends HttpError {
+	name = 'ServiceUnavailableError' as const;
+	statusCode = HttpResponse.ServiceUnavailable.code;
+	httpName = HttpResponse.ServiceUnavailable.name;
+	httpDescription = HttpResponse.ServiceUnavailable.description;
+}
+
+export class GatewayTimeoutError extends HttpError {
+	name = 'GatewayTimeoutError' as const;
+	statusCode = HttpResponse.GatewayTimeout.code;
+	httpName = HttpResponse.GatewayTimeout.name;
+	httpDescription = HttpResponse.GatewayTimeout.description;
+}
+
+export class HttpVersionNotSupportedError extends HttpError {
+	name = 'HttpVersionNotSupportedError' as const;
+	statusCode = HttpResponse.HttpVersionNotSupported.code;
+	httpName = HttpResponse.HttpVersionNotSupported.name;
+	httpDescription = HttpResponse.HttpVersionNotSupported.description;
+}
+
+export class NetworkAuthenticationRequiredError extends HttpError {
+	name = 'NetworkAuthenticationRequiredError' as const;
+	statusCode = HttpResponse.NetworkAuthenticationRequired.code;
+	httpName = HttpResponse.NetworkAuthenticationRequired.name;
+	httpDescription = HttpResponse.NetworkAuthenticationRequired.description;
+}
+
 export abstract class InitializationError extends Error {}
 
 export class MissingEnvironmentVariableError extends InitializationError {
