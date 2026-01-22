@@ -124,23 +124,23 @@ export class LengthRequiredError extends HttpError {
 
 export class PreconditionFailedError extends HttpError {
 	name = 'PreconditionFailedError' as const;
-	statusCode = HttpResponse.Precondition.code;
-	httpName = HttpResponse.Precondition.name;
-	httpDescription = HttpResponse.Precondition.description;
+	statusCode = HttpResponse.PreconditionFailed.code;
+	httpName = HttpResponse.PreconditionFailed.name;
+	httpDescription = HttpResponse.PreconditionFailed.description;
 }
 
 export class PayloadTooLargeError extends HttpError {
 	name = 'PayloadTooLargeError' as const;
-	statusCode = HttpResponse.RequestEntityTooLarge.code;
-	httpName = HttpResponse.RequestEntityTooLarge.name;
-	httpDescription = HttpResponse.RequestEntityTooLarge.description;
+	statusCode = HttpResponse.PayloadTooLarge.code;
+	httpName = HttpResponse.PayloadTooLarge.name;
+	httpDescription = HttpResponse.PayloadTooLarge.description;
 }
 
 export class UriTooLongError extends HttpError {
 	name = 'UriTooLongError' as const;
-	statusCode = HttpResponse.RequestUriTooLong.code;
-	httpName = HttpResponse.RequestUriTooLong.name;
-	httpDescription = HttpResponse.RequestUriTooLong.description;
+	statusCode = HttpResponse.URITooLong.code;
+	httpName = HttpResponse.URITooLong.name;
+	httpDescription = HttpResponse.URITooLong.description;
 }
 
 export class UnsupportedMediaTypeError extends HttpError {
@@ -152,9 +152,9 @@ export class UnsupportedMediaTypeError extends HttpError {
 
 export class RangeNotSatisfiableError extends HttpError {
 	name = 'RangeNotSatisfiableError' as const;
-	statusCode = HttpResponse.RequestedRangeNotSatisfiable.code;
-	httpName = HttpResponse.RequestedRangeNotSatisfiable.name;
-	httpDescription = HttpResponse.RequestedRangeNotSatisfiable.description;
+	statusCode = HttpResponse.RangeNotSatisfiable.code;
+	httpName = HttpResponse.RangeNotSatisfiable.name;
+	httpDescription = HttpResponse.RangeNotSatisfiable.description;
 }
 
 export class ExpectationFailedError extends HttpError {
@@ -162,6 +162,83 @@ export class ExpectationFailedError extends HttpError {
 	statusCode = HttpResponse.ExpectationFailed.code;
 	httpName = HttpResponse.ExpectationFailed.name;
 	httpDescription = HttpResponse.ExpectationFailed.description;
+}
+
+export class ImATeapotError extends HttpError {
+	name = 'ImATeapotError' as const;
+	statusCode = HttpResponse.ImATeapot.code;
+	httpName = HttpResponse.ImATeapot.name;
+	httpDescription = HttpResponse.ImATeapot.description;
+}
+
+export class MisdirectedRequestError extends HttpError {
+	name = 'MisdirectedRequestError' as const;
+	statusCode = HttpResponse.MisdirectedRequest.code;
+	httpName = HttpResponse.MisdirectedRequest.name;
+	httpDescription = HttpResponse.MisdirectedRequest.description;
+}
+
+export class UnprocessableContentError extends HttpError {
+	name = 'UnprocessableContentError' as const;
+	statusCode = HttpResponse.UnprocessableContent.code;
+	httpName = HttpResponse.UnprocessableContent.name;
+	httpDescription = HttpResponse.UnprocessableContent.description;
+}
+
+export class LockedError extends HttpError {
+	name = 'LockedError' as const;
+	statusCode = HttpResponse.Locked.code;
+	httpName = HttpResponse.Locked.name;
+	httpDescription = HttpResponse.Locked.description;
+}
+
+export class FailedDependencyError extends HttpError {
+	name = 'FailedDependencyError' as const;
+	statusCode = HttpResponse.FailedDependency.code;
+	httpName = HttpResponse.FailedDependency.name;
+	httpDescription = HttpResponse.FailedDependency.description;
+}
+
+export class TooEarlyError extends HttpError {
+	name = 'TooEarlyError' as const;
+	statusCode = HttpResponse.TooEarly.code;
+	httpName = HttpResponse.TooEarly.name;
+	httpDescription = HttpResponse.TooEarly.description;
+}
+
+export class UpgradeRequiredError extends HttpError {
+	name = 'UpgradeRequiredError' as const;
+	statusCode = HttpResponse.UpgradeRequired.code;
+	httpName = HttpResponse.UpgradeRequired.name;
+	httpDescription = HttpResponse.UpgradeRequired.description;
+}
+
+export class PreconditionRequiredError extends HttpError {
+	name = 'PreconditionRequiredError' as const;
+	statusCode = HttpResponse.PreconditionRequired.code;
+	httpName = HttpResponse.PreconditionRequired.name;
+	httpDescription = HttpResponse.PreconditionRequired.description;
+}
+
+export class TooManyRequestsError extends HttpError {
+	name = 'TooManyRequestsError' as const;
+	statusCode = HttpResponse.TooManyRequests.code;
+	httpName = HttpResponse.TooManyRequests.name;
+	httpDescription = HttpResponse.TooManyRequests.description;
+}
+
+export class RequestHeaderFieldsTooLargeError extends HttpError {
+	name = 'RequestHeaderFieldsTooLargeError' as const;
+	statusCode = HttpResponse.RequestHeaderFieldsTooLarge.code;
+	httpName = HttpResponse.RequestHeaderFieldsTooLarge.name;
+	httpDescription = HttpResponse.RequestHeaderFieldsTooLarge.description;
+}
+
+export class UnavailableForLegalReasonsError extends HttpError {
+	name = 'UnavailableForLegalReasonsError' as const;
+	statusCode = HttpResponse.UnavailableForLegalReasons.code;
+	httpName = HttpResponse.UnavailableForLegalReasons.name;
+	httpDescription = HttpResponse.UnavailableForLegalReasons.description;
 }
 
 export class NotImplementedError extends HttpError {
@@ -194,9 +271,37 @@ export class GatewayTimeoutError extends HttpError {
 
 export class HttpVersionNotSupportedError extends HttpError {
 	name = 'HttpVersionNotSupportedError' as const;
-	statusCode = HttpResponse.HttpVersionNotSupported.code;
-	httpName = HttpResponse.HttpVersionNotSupported.name;
-	httpDescription = HttpResponse.HttpVersionNotSupported.description;
+	statusCode = HttpResponse.HTTPVersionNotSupported.code;
+	httpName = HttpResponse.HTTPVersionNotSupported.name;
+	httpDescription = HttpResponse.HTTPVersionNotSupported.description;
+}
+
+export class VariantAlsoNegotiatesError extends HttpError {
+	name = 'VariantAlsoNegotiatesError' as const;
+	statusCode = HttpResponse.VariantAlsoNegotiates.code;
+	httpName = HttpResponse.VariantAlsoNegotiates.name;
+	httpDescription = HttpResponse.VariantAlsoNegotiates.description;
+}
+
+export class InsufficientStorageError extends HttpError {
+	name = 'InsufficientStorageError' as const;
+	statusCode = HttpResponse.InsufficientStorage.code;
+	httpName = HttpResponse.InsufficientStorage.name;
+	httpDescription = HttpResponse.InsufficientStorage.description;
+}
+
+export class LoopDetectedError extends HttpError {
+	name = 'LoopDetectedError' as const;
+	statusCode = HttpResponse.LoopDetected.code;
+	httpName = HttpResponse.LoopDetected.name;
+	httpDescription = HttpResponse.LoopDetected.description;
+}
+
+export class NotExtendedError extends HttpError {
+	name = 'NotExtendedError' as const;
+	statusCode = HttpResponse.NotExtended.code;
+	httpName = HttpResponse.NotExtended.name;
+	httpDescription = HttpResponse.NotExtended.description;
 }
 
 export class NetworkAuthenticationRequiredError extends HttpError {
