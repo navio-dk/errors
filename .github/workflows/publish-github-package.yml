@@ -1,0 +1,59 @@
+name: Publish to GitHub Packages
+
+# Publish to GitHub Packages on semver tags — stable (v1.2.3) and prerelease (v1.2.3-rc.0).
+# Releases are cut with `commit-and-tag-version` (the `version` script), which creates the
+# `v`-prefixed tag; push it with `git push --follow-tags`.
+#   stable     : commit-and-tag-version                  -> vX.Y.Z      (dist-tag: latest)
+#   prerelease : commit-and-tag-version --prerelease rc  -> vX.Y.Z-rc.0 (dist-tag: next)
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'        # stable     -> published as `latest`
+      - 'v[0-9]+.[0-9]+.[0-9]+-*'      # prerelease -> published under `next`
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+
+      # Fail fast if the pushed tag doesn't match package.json, so we never
+      # publish a mislabeled version.
+      - name: Verify tag matches package.json version
+        run: |
+          pkg_version="v$(jq -r .version package.json)"
+          if [ "$pkg_version" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match package.json version ($pkg_version)"
+            exit 1
+          fi
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: 1.3.13
+
+      # Scope ONLY @navio-dk to GH Packages; all other deps stay on npmjs.
+      # Token is substituted at render time, so it works for both npm and bun
+      # (no reliance on .npmrc env-var expansion).
+      - name: Configure GitHub Packages auth
+        run: |
+          echo "@navio-dk:registry=https://npm.pkg.github.com" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
+
+      # No install/build step: these are raw-config packages, so `bun publish`
+      # just tarballs the `files` allowlist + package.json + README — it needs
+      # neither node_modules nor a resolved lockfile.
+      # --ignore-scripts skips the prepare/husky hook (husky isn't installed here anyway).
+      # Stable tags publish as `latest`; prerelease tags (vX.Y.Z-rc.0, -beta.1, …) publish
+      # under `next`, so a test release never becomes the version a bare `bun add` resolves to.
+      - name: Publish
+        run: |
+          if [[ "$GITHUB_REF_NAME" == *-* ]]; then
+            bun publish --ignore-scripts --tag next
+          else
+            bun publish --ignore-scripts
+          fi
