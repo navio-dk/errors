@@ -1,8 +1,7 @@
 {
 	"recommendations": [
 		"kalimahapps.tabaqa",
-		"dbaeumer.vscode-eslint",
-		"stylelint.vscode-stylelint",
+		"biomejs.biome",
 		"github.vscode-github-actions",
 		"oven.bun-vscode",
 		"thebearingedge.vscode-sql-lit",

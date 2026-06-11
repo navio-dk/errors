@@ -1,109 +1,14 @@
 {
-	"prettier.enable": false,
-	"eslint.enable": true,
-	"editor.codeActionsOnSave": {
-		"source.fixAll.eslint": "explicit",
-		"source.fixAll.stylelint": "explicit"
-	},
-	"eslint.validate": [
-		"javascript",
-		"javascriptreact",
-		"typescript",
-		"typescriptreact",
-		"vue",
-		"vue-html",
-		"html",
-		"markdown",
-		"json",
-		"jsonc",
-		"json5",
-		"yaml",
-		"toml",
-		"xml",
-		"svg",
-		"gql",
-		"graphql",
-		"astro",
-		"svelte",
-		"css",
-		"tailwindcss",
-		"less",
-		"scss",
-		"pcss",
-		"postcss"
-	],
-	"eslint.format.enable": true,
 	"editor.formatOnSave": false,
+	"editor.defaultFormatter": "biomejs.biome",
+	"editor.codeActionsOnSave": {
+		"source.organizeImports.biome": "explicit",
+		"source.fixAll.biome": "explicit"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
 	"css.validate": false,
 	"less.validate": false,
-	"scss.validate": false,
-	"stylelint.enable": true,
-	"eslint.rules.customizations": [
-		{
-			"rule": "style/*",
-			"severity": "off",
-			"fixable": true
-		},
-		{
-			"rule": "format/*",
-			"severity": "off",
-			"fixable": true
-		},
-		{
-			"rule": "*-indent",
-			"severity": "off",
-			"fixable": true
-		},
-		{
-			"rule": "*-spacing",
-			"severity": "off",
-			"fixable": true
-		},
-		{
-			"rule": "*-spaces",
-			"severity": "off",
-			"fixable": true
-		},
-		{
-			"rule": "*-order",
-			"severity": "off",
-			"fixable": true
-		},
-		{
-			"rule": "*-dangle",
-			"severity": "off",
-			"fixable": true
-		},
-		{
-			"rule": "*-newline",
-			"severity": "off",
-			"fixable": true
-		},
-		{
-			"rule": "*quotes",
-			"severity": "off",
-			"fixable": true
-		},
-		{
-			"rule": "*semi",
-			"severity": "off",
-			"fixable": true
-		}
-	],
-	"stylelint.packageManager": "pnpm",
-	"stylelint.validate": [
-		"css",
-		"postcss",
-		"tailwindcss",
-		"vue"
-	],
-	"tailwindCSS.experimental.classRegex": [
-		"[\"'`](.*?)[\"'`]"
-	],
-	"files.associations": {
-		"*.css": "tailwindcss"
-	},
-	"editor.quickSuggestions": {
-		"strings": true
-	}
+	"scss.validate": false
 }

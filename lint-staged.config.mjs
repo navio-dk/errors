@@ -1,3 +1,3 @@
-import eslintConfig from '@navio-dk/dev-env/lint-staged/eslint';
-
-export default eslintConfig;
+export default {
+	'*': ['biome lint --no-errors-on-unmatched --files-ignore-unknown=true --diagnostic-level=error'],
+};

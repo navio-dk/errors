@@ -1,9 +1,6 @@
 import type { ValidationError } from 'elysia';
-import {
-	InitializationError,
-	JSONLoggableError,
-	HttpError
-} from './errors';
+
+import { HttpError, InitializationError, JSONLoggableError } from './errors.ts';
 
 export function isError(error: unknown): error is Error {
 	return error instanceof Error;
@@ -13,7 +10,9 @@ export function isJSONLoggableError(error: unknown): error is JSONLoggableError 
 	return error instanceof JSONLoggableError;
 }
 
-export function hasDetails(error: unknown): error is JSONLoggableError & { details: NonNullable<JSONLoggableError['details']> } {
+export function hasDetails(
+	error: unknown
+): error is JSONLoggableError & { details: NonNullable<JSONLoggableError['details']> } {
 	return error instanceof JSONLoggableError && error.details !== undefined;
 }
 
@@ -29,8 +28,11 @@ export function isInitializationError(error: unknown): error is InitializationEr
 	return error instanceof InitializationError;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any -- this is how Error is actually typed
-export function isErrorOfType<TKnown extends new (...args: any[]) => Error>(error: unknown, ErrorType: TKnown): error is TKnown {
+// biome-ignore lint/suspicious/noExplicitAny: this is how Error is actually typed
+export function isErrorOfType<TKnown extends new (...args: any[]) => Error>(
+	error: unknown,
+	ErrorType: TKnown
+): error is TKnown {
 	return error instanceof ErrorType;
 }
 

@@ -3,12 +3,10 @@
 	"compilerOptions": {
 		"outDir": "dist",
 		"paths": {
-      "@": [
-        "./"
-      ],
-      "@/*": [
-        "./*"
-			]
-		}
+			"@": ["./"],
+			"@/*": ["./*"]
+		},
+		"noEmit": true,
+		"allowImportingTsExtensions": true
 	}
 }

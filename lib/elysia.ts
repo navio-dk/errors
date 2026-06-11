@@ -1,16 +1,13 @@
-import { isHttpError, isElysiaValidationError } from './assertions';
-import { HttpResponse } from './http-responses';
-import { formatErrorMessage, logTraceableError } from './utils';
 import type { Context } from 'elysia';
 
+import { isElysiaValidationError, isHttpError } from './assertions.ts';
+import { formatErrorMessage } from './formatErrorMessage.ts';
+import { HttpResponse } from './httpResponses.ts';
+import { logTraceableError } from './utils.ts';
+
 // The result of calling this should be passed to Elysia.onError
-export function createErrorHandler(opts: {
-	enableJsonLogging?: boolean
-} = {}) {
-	return function onError({ error, set }: {
-		error: unknown,
-		set: Context['set']
-	}) {
+export function createErrorHandler(opts: { enableJsonLogging?: boolean } = {}) {
+	return function onError({ error, set }: { error: unknown; set: Context['set'] }) {
 		logTraceableError(error, { jsonLoggable: opts.enableJsonLogging ?? false });
 
 		if (isElysiaValidationError(error)) {
@@ -22,7 +19,11 @@ export function createErrorHandler(opts: {
 		if (isHttpError(error)) {
 			set.status = error.statusCode;
 
-			return formatErrorMessage(error.name, error.message) || error.httpMessage;
+			return {
+				name: error.name,
+				message: error.message || error.httpDescription,
+				...(error.code && { code: error.code }),
+			};
 		}
 
 		// All non-custom errors are treated as 500 Internal Server Error and message is obscured

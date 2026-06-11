@@ -1,4 +1,4 @@
 export default {
 	path: '.',
-	'tag-prefix': 'v'
+	'tag-prefix': 'v',
 };
