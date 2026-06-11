@@ -13,7 +13,7 @@ Using this package means following 4 simple rules:
 This package is published to **GitHub Packages**. The registry install (below) is recommended — `github:` refs are incompatible with `bun install --frozen-lockfile`. The `github:` method still works and is kept for repos still mid-migration.
 
 ### Registry (recommended)
-First, add a scoped registry + auth to your project's `.npmrc` (next to `package.json`). **Commit this file** — it holds only the `${NODE_AUTH_TOKEN}` placeholder, never the token itself, so it's safe to check in and is shared by your whole team and CI:
+First, add a scoped registry + auth to your project's `.npmrc` (next to `package.json`):
 
 ```ini
 # .npmrc
