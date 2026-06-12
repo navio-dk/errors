@@ -69,6 +69,9 @@ function buildErrorObject(error: unknown): Record<string, unknown> {
 		errorObj.statusCode = error.statusCode;
 		errorObj.httpName = error.httpName;
 		errorObj.httpDescription = error.httpDescription;
+		if (error.code !== undefined) {
+			errorObj.code = error.code;
+		}
 	}
 
 	// Add JSONLoggableError details (renamed from loggerDetails)
