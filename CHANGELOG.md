@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.1.0](https://github.com/navio-dk/errors/compare/v4.0.1...v4.1.0) (2026-06-12)
+
+
+### Features
+
+* update version to 4.0.1 in package.json ([9f80a7c](https://github.com/navio-dk/errors/commit/9f80a7cb23a6fb7c999bc783245f1b631fe62b10))
+
 ## [3.2.0-rc.1](https://github.com/navio-dk/errors/compare/v3.2.0...v3.2.0-rc.1) (2026-06-09)
 
 ## [3.2.0](https://github.com/navio-dk/errors/compare/v3.1.0...v3.2.0) (2026-01-22)

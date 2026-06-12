@@ -1,6 +1,6 @@
 {
 	"name": "@navio-dk/errors",
-	"version": "4.0.1",
+	"version": "4.1.0",
 	"type": "module",
 	"license": "UNLICENSED",
 	"repository": {
@@ -10,7 +10,10 @@
 	"publishConfig": {
 		"registry": "https://npm.pkg.github.com"
 	},
-	"files": ["index.ts", "lib"],
+	"files": [
+		"index.ts",
+		"lib"
+	],
 	"scripts": {
 		"prepare": "husky",
 		"lint-staged": "lint-staged",
@@ -35,5 +38,11 @@
 	"peerDependencies": {
 		"elysia": "^1.1.23"
 	},
-	"trustedDependencies": ["@navio-dk/dev-env", "@navio-dk/ts-utils", "esbuild", "husky", "unrs-resolver"]
+	"trustedDependencies": [
+		"@navio-dk/dev-env",
+		"@navio-dk/ts-utils",
+		"esbuild",
+		"husky",
+		"unrs-resolver"
+	]
 }
