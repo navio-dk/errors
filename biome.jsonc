@@ -1,0 +1,442 @@
+{
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"root": true,
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true,
+		"defaultBranch": "main"
+	},
+	"files": { "ignoreUnknown": true, "includes": ["**/*"] },
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		}
+	},
+	"html": {
+		"experimentalFullSupportEnabled": true,
+		"formatter": { "enabled": true },
+		"parser": {
+			"interpolation": true
+		}
+	},
+	"formatter": {
+		"enabled": true,
+		"formatWithErrors": true,
+		"indentStyle": "tab",
+		"indentWidth": 2,
+		"lineWidth": 120,
+		"attributePosition": "auto",
+		"bracketSameLine": false,
+		"bracketSpacing": true,
+		"expand": "auto"
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			// NOTE: All a11y rules below may need adjustment based on your accessibility requirements
+			"a11y": {
+				"noAccessKey": "error",
+				"noAriaHiddenOnFocusable": "error",
+				"noAriaUnsupportedElements": "error",
+				"noAutofocus": "off",
+				"noDistractingElements": "error",
+				"noHeaderScope": "error",
+				"noInteractiveElementToNoninteractiveRole": "error",
+				"noNoninteractiveElementToInteractiveRole": "error",
+				"noNoninteractiveTabindex": "error",
+				"noPositiveTabindex": "error",
+				"noRedundantAlt": "error",
+				"noRedundantRoles": "error",
+				"noSvgWithoutTitle": "off",
+				"useAltText": "off",
+				"useAnchorContent": "error",
+				"useAriaActivedescendantWithTabindex": "error",
+				"useAriaPropsForRole": "error",
+				"useButtonType": "off",
+				"useFocusableInteractive": "error",
+				"useHeadingContent": "error",
+				"useHtmlLang": "error",
+				"useIframeTitle": "error",
+				"useKeyWithClickEvents": "error",
+				"useKeyWithMouseEvents": "error",
+				"useMediaCaption": "warn",
+				"useValidAnchor": "error",
+				"useValidAriaProps": "error",
+				"useValidAriaRole": "error",
+				"useValidAriaValues": "error",
+				"useValidLang": "error",
+				"useGenericFontNames": "error"
+			},
+			"complexity": {
+				"useMaxParams": {
+					"level": "warn",
+					"options": {
+						"max": 5
+					}
+				},
+				"noUselessUndefined": "error",
+				"noAdjacentSpacesInRegex": "error",
+				"noArguments": "error",
+				"noExtraBooleanCast": "error",
+				// NOTE: Cognitive complexity threshold may need adjustment for your codebase
+				"noExcessiveCognitiveComplexity": "info",
+				// NOTE: Function line limit may need adjustment
+				// "noExcessiveLinesPerFunction": {
+				// 	"level": "info",
+				// 	"options": {
+				// 		"maxLines": 300,
+				// 		"skipBlankLines": true,
+				// 		"skipIifes": true
+				// 	}
+				// },
+				"noExcessiveNestedTestSuites": "error",
+				"noForEach": "off",
+				"noImplicitCoercions": "error",
+				"noStaticOnlyClass": "error",
+				"noThisInStatic": "error",
+				"noUselessCatch": "error",
+				"noUselessConstructor": "error",
+				"noUselessEscapeInRegex": "error",
+				"noUselessThisAlias": "error",
+				"noUselessTypeConstraint": "error",
+				"noVoid": "off",
+				"useArrowFunction": "off",
+				"useFlatMap": "error",
+				"useLiteralKeys": "error",
+				"useOptionalChain": "error",
+				"useRegexLiterals": "error",
+				"useSimplifiedLogicExpression": "error",
+				"noImportantStyles": "warn" // NOTE: May need adjustment based on legacy styles
+			},
+			"correctness": {
+				"useParseIntRadix": {
+					"level": "error",
+					"fix": "safe"
+				},
+				"noUnusedImports": "error",
+				"useExhaustiveDependencies": "error",
+				"noConstantMathMinMaxClamp": "error",
+				"noUndeclaredDependencies": "off",
+				"noUnresolvedImports": "off", // false positives for Bun APIs, node: built-ins, and CJS default exports
+				"noConstantCondition": "error",
+				"noEmptyCharacterClassInRegex": "error",
+				"noEmptyPattern": "error",
+				"noInvalidUseBeforeDeclaration": "error",
+				"noNonoctalDecimalEscape": "error",
+				"noPrecisionLoss": "error",
+				"noSelfAssign": "error",
+				"noSwitchDeclarations": "error",
+				"noUnsafeFinally": "error",
+				"noUnsafeOptionalChaining": "error",
+				"noUnusedLabels": "error",
+				"noUnusedPrivateClassMembers": "error",
+				"noUnusedVariables": "error",
+				"useIsNan": "error",
+				"useValidForDirection": "error",
+				"useValidTypeof": "error",
+				"useYield": "error",
+				"noInvalidDirectionInLinearGradient": "error",
+				"noInvalidGridAreas": "error",
+				"noInvalidPositionAtImportRule": "error",
+				"noMissingVarFunction": "error",
+				"noUnknownFunction": "error",
+				"noUnknownMediaFeatureName": "error",
+				"noUnknownProperty": "error",
+				"noUnknownPseudoClass": {
+					"level": "error",
+					"options": {
+						"ignore": ["deep"]
+					}
+				},
+				"noUnknownPseudoElement": "error",
+				"noUnknownTypeSelector": "error",
+				"noUnknownUnit": "error",
+				"noUnmatchableAnbSelector": "error",
+				"noVueReservedKeys": "error",
+				"noVueReservedProps": "error",
+				"noVueSetupPropsReactivityLoss": "off", // reactive prop destructuring is enabled
+				"noVueDataObjectDeclaration": "error",
+				"noVueDuplicateKeys": "error"
+			},
+			// NOTE: Nursery rules are experimental and may change - review before enabling
+			"nursery": {
+				"noUselessTypeConversion": "error",
+				"useDisposables": "error",
+				"noMisleadingReturnType": "error",
+				"noUnsafePlusOperands": "error",
+				"noDuplicateSelectors": "error",
+				"noDrizzleUpdateWithoutWhere": "error",
+				"noDrizzleDeleteWithoutWhere": "error",
+				"useImportsFirst": "error",
+				"useArraySome": "error",
+				"useNamedCaptureGroup": "error",
+				"useNullishCoalescing": "error",
+				"noConditionalExpect": "error",
+				"noPlaywrightElementHandle": "error",
+				"noPlaywrightEval": "error",
+				"noPlaywrightForceOption": "error",
+				"noPlaywrightMissingAwait": "error",
+				"noPlaywrightNetworkidle": "error",
+				"noPlaywrightPagePause": "error",
+				"noPlaywrightUselessAwait": "error",
+				"noPlaywrightWaitForNavigation": "error",
+				"noPlaywrightWaitForSelector": "error",
+				"noPlaywrightWaitForTimeout": "error",
+				"usePlaywrightValidDescribeCallback": "error",
+				"useExpect": "error",
+				"noNestedPromises": "error",
+				"noRedundantDefaultExport": "error",
+				"useErrorCause": "error",
+				"noDuplicateAttributes": "error",
+				"noReturnAssign": "error",
+				"noDuplicateArgumentNames": "error",
+				"noDuplicateFieldDefinitionNames": "error",
+				"noMultiAssign": "error",
+				"noUndeclaredEnvVars": "error",
+				"noAmbiguousAnchorText": "error",
+				"useDestructuring": "error",
+				"useSortedClasses": "error",
+				"useRequiredScripts": "error",
+				"useRegexpExec": "error",
+				"useAwaitThenable": "error", // does not play well with drizzle's thenable query builder and seemingly gives false positives (https://github.com/biomejs/biome/issues/8476): last checked 2.3.13
+				"noScriptUrl": "error",
+				"noProto": "error",
+				"noTernary": "off",
+				"noEqualsToNull": "error",
+				"noMultiStr": "error",
+				"noLeakedRender": "error",
+				"noDuplicatedSpreadProps": "error",
+				"useFind": "error",
+				"noForIn": "off",
+				"noFloatingPromises": "error",
+				"noMisusedPromises": "error",
+				"noUnnecessaryConditions": "off",
+				"noVueOptionsApi": "error",
+				"noVueRefAsOperand": "error",
+				"useScopedStyles": "error",
+				"useBaseline": {
+					"level": "warn",
+					"options": {
+						"available": "newly", // change this to "widely" if you cannot control user's browser
+						"allowProperties": [],
+						"allowAtRules": [],
+						"allowFunctions": [],
+						"allowMediaConditions": [],
+						"allowPropertyValues": {},
+						"allowSelectors": []
+					}
+				},
+				"useVueVapor": "off", // enable this some time in the future when vapor mode is well established
+				"useVueValidVPre": "error",
+				"useVueValidVCloak": "error",
+				"useVueDefineMacrosOrder": {
+					"level": "warn",
+					"options": {
+						"order": ["defineOptions", "definePage", "defineModel", "defineProps", "defineEmits"]
+					}
+				},
+				"useVueValidVOnce": "error",
+				"useVueVForKey": "error",
+				"useVueConsistentVOnStyle": {
+					"level": "error",
+					"options": {
+						"style": "shorthand"
+					}
+				},
+				"useVueConsistentVBindStyle": "off",
+				"useVueConsistentDefinePropsDeclaration": "off", // enable when bugs with array methods are fixed (last checked 2.3.11)
+				"useVueValidTemplateRoot": "error",
+				"useVueMultiWordComponentNames": "off",
+				"useVueHyphenatedAttributes": "off", // turn on when named templates with # are fixed
+				"useVueValidVBind": "off", // enable when the :prop (with no =) shorthand is supported (last checked 2.4.12)
+				"useVueValidVIf": "error",
+				"useVueValidVElse": "error",
+				"useVueValidVElseIf": "error",
+				"useVueValidVHtml": "error",
+				"useVueValidVText": "error",
+				"useVueValidVOn": "off" // not very important, but also does not work with @click.stop (last checked 2.3.13)
+			},
+			// NOTE: Performance rules below may need adjustment based on your performance requirements
+			"performance": {
+				"noAccumulatingSpread": "warn",
+				"noAwaitInLoops": "error",
+				"noBarrelFile": "off", // NOTE: Enable if you want to discourage barrel files
+				"noDelete": "error",
+				"noReExportAll": "off" // NOTE: Enable if you want to discourage re-export all patterns
+			},
+			// NOTE: Security rules are generally strict and should stay enabled
+			"security": {
+				"noDangerouslySetInnerHtml": "error",
+				"noDangerouslySetInnerHtmlWithChildren": "error",
+				"noGlobalEval": "error"
+			},
+			"style": {
+				"noMagicNumbers": "off", // I think this rule is pretty good, but it also flags a lot of things that feel superfluous
+				"noDoneCallback": "error",
+				"noParameterAssign": "warn",
+				"noCommonJs": "error",
+				"noDefaultExport": "off", // NOTE: Enable if you want to enforce named exports only
+				"noImplicitBoolean": "off", // NOTE: Enable if you want explicit boolean props in JSX
+				"noInferrableTypes": "error",
+				"noNamespace": "error",
+				"noNegationElse": "off", // NOTE: Enable to enforce positive conditions
+				"noNonNullAssertion": "error",
+				"noParameterProperties": "off", // NOTE: Enable if you dislike TypeScript parameter properties
+				"noRestrictedGlobals": "off", // NOTE: Configure if you want to restrict specific globals
+				"noShoutyConstants": "off", // NOTE: Enable to enforce non-SCREAMING_SNAKE_CASE for non-constants
+				"noUselessElse": "error",
+				"noYodaExpression": "error",
+				"useConsistentArrowReturn": "error",
+				"useConsistentCurlyBraces": "error",
+				"useArrayLiterals": "error",
+				"useAsConstAssertion": "error",
+				"useBlockStatements": "off",
+				"useCollapsedElseIf": "error",
+				"useConsistentArrayType": "error",
+				"useConsistentObjectDefinitions": "error",
+				"useConsistentTypeDefinitions": "error",
+				"useConst": "error",
+				"useDefaultParameterLast": "error",
+				"useExplicitLengthCheck": "off", // NOTE: Enable if you prefer explicit .length > 0
+				"useExponentiationOperator": "error",
+				"useFilenamingConvention": "off", // uses override to only apply to some folders
+				"useForOf": "error",
+				"useImportType": { "level": "error", "options": { "style": "separatedType" } },
+				"useLiteralEnumMembers": "error",
+				"useNamingConvention": "off", // NOTE: Configure if you want to enforce naming patterns
+				"useNumberNamespace": "error",
+				"useShorthandFunctionType": "error",
+				"useSingleVarDeclarator": "error",
+				"useTemplate": {
+					"level": "error",
+					"fix": "safe"
+				},
+				"useThrowOnlyError": "error",
+				"useUnifiedTypeSignatures": {
+					"level": "error",
+					"options": {
+						"ignoreDifferentlyNamedParameters": true,
+						"ignoreDifferentJsDoc": true
+					}
+				},
+				"noDescendingSpecificity": "warn", // NOTE: May need adjustment for complex stylesheets
+				"noValueAtRule": "error"
+			},
+			"suspicious": {
+				"noUnusedExpressions": "off",
+				"noDeprecatedImports": "error",
+				"noImportCycles": "error", // NOTE: might be heavy on performance
+				"noDuplicateDependencies": "error",
+				"noRedeclare": "error",
+				"noAssignInExpressions": "error",
+				"noAsyncPromiseExecutor": "error",
+				"noCatchAssign": "error",
+				"noCompareNegZero": "error",
+				"noConfusingVoidType": "error",
+				"noConsole": {
+					"level": "warn",
+					"options": { "allow": ["warn", "error", "info"] }
+				},
+				"noConstantBinaryExpressions": "error",
+				"noControlCharactersInRegex": "error",
+				"noDebugger": "error",
+				"noDoubleEquals": "error",
+				"noDuplicateCase": "error",
+				"noDuplicateElseIf": "error",
+				"noEmptyBlockStatements": "error",
+				"noExplicitAny": "error",
+				"noExtraNonNullAssertion": "error",
+				"noFallthroughSwitchClause": "error",
+				"noGlobalAssign": "error",
+				"noIrregularWhitespace": "error",
+				"noMisleadingCharacterClass": "error",
+				"noMisleadingInstantiator": "error",
+				"noNonNullAssertedOptionalChain": "error",
+				"noPrototypeBuiltins": "error",
+				"noShadowRestrictedNames": "error",
+				"noSparseArray": "error",
+				"noTemplateCurlyInString": "warn",
+				"noTsIgnore": "error",
+				"noUnsafeDeclarationMerging": "error",
+				"noUselessRegexBackrefs": "error",
+				"noVar": "error",
+				"useAdjacentOverloadSignatures": "error",
+				"useAwait": "error",
+				"useNamespaceKeyword": "error",
+				"noBiomeFirstException": "error",
+				"noDuplicateObjectKeys": "error",
+				"noQuickfixBiome": "info",
+				"useBiomeIgnoreFolder": "warn",
+				"noDuplicateAtImportRules": "error",
+				"noDuplicateCustomProperties": "error",
+				"noDuplicateFontNames": "error",
+				"noDuplicateProperties": "error",
+				"noDuplicateSelectorsKeyframeBlock": "error",
+				"noEmptyBlock": "error",
+				"noImportantInKeyframe": "error",
+				"noShorthandPropertyOverrides": "error",
+				"noUnknownAtRules": "warn", // NOTE: May need adjustment for custom at-rules
+				"noUselessEscapeInString": "error"
+			}
+		},
+		"domains": { "vue": "all", "project": "all", "types": "all" }
+	},
+	"javascript": {
+		"formatter": {
+			"enabled": true,
+			"jsxQuoteStyle": "single",
+			"quoteProperties": "asNeeded",
+			"trailingCommas": "es5",
+			"arrowParentheses": "asNeeded",
+			"quoteStyle": "single",
+			"operatorLinebreak": "after",
+			"semicolons": "always"
+		}
+	},
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"source": {
+				"organizeImports": {
+					"level": "on",
+					"options": {
+						"groups": [
+							{ "type": true, "source": ":PACKAGE_WITH_PROTOCOL:" },
+							{ "type": true, "source": ":URL:" },
+							{ "type": true, "source": ":PACKAGE:" },
+							{ "type": true, "source": [":ALIAS:", "@@/**"] },
+							{ "type": true, "source": ":PATH:" },
+							":BLANK_LINE:",
+							{ "type": false, "source": ":PACKAGE_WITH_PROTOCOL:" },
+							{ "type": false, "source": ":URL:" },
+							{ "type": false, "source": ":PACKAGE:" },
+							{ "type": false, "source": [":ALIAS:", "@@/**"] },
+							{ "type": false, "source": ":PATH:" }
+						]
+					}
+				}
+			}
+		}
+	},
+	"overrides": [
+		{
+			"includes": ["index.ts", "lib/**"],
+			"linter": {
+				"rules": {
+					"style": {
+						"useFilenamingConvention": {
+							"level": "error",
+							"options": {
+								"filenameCases": ["camelCase"],
+								"requireAscii": true,
+								"strictCase": true
+							}
+						}
+					}
+				}
+			}
+		}
+	]
+}

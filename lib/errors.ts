@@ -1,18 +1,31 @@
-import { HttpResponse, type HttpCode } from './http-responses';
-import { formatErrorMessage } from './utils';
 import type { Jsonifiable } from '@navio-dk/ts-utils';
+import type { HttpCode } from './httpResponses.ts';
+
+import { formatErrorMessage } from './formatErrorMessage.ts';
+import { HttpResponse } from './httpResponses.ts';
 
 export abstract class JSONLoggableError extends Error {
 	// details are not readonly, if we for some reason want to catch and add details, the re-throw etc.
 	details?: Jsonifiable;
 
-	constructor(message?: string, ctx?: {
-		cause?: unknown;
-		details?: Jsonifiable
-	}) {
+	/*
+	 * Machine-readable, kebab-case error code surfaced on the HTTP error body.
+	 * Consumers define their own code vocabulary; this package only carries it.
+	 */
+	readonly code?: string;
+
+	constructor(
+		message?: string,
+		ctx?: {
+			cause?: unknown;
+			details?: Jsonifiable;
+			code?: string;
+		}
+	) {
 		super(message, { cause: ctx?.cause });
 
 		this.details = ctx?.details;
+		this.code = ctx?.code;
 	}
 
 	// By default, JSON.stringify will escape newlines in strings and create a string with no newlines, which makes it work with log scrapers such as Loki
@@ -22,10 +35,10 @@ export abstract class JSONLoggableError extends Error {
 }
 
 export abstract class HttpError extends JSONLoggableError {
-	abstract readonly statusCode: HttpCode
-	abstract readonly httpName: HttpResponse['name']
-	abstract readonly httpDescription: HttpResponse['description']
-	
+	abstract readonly statusCode: HttpCode;
+	abstract readonly httpName: HttpResponse['name'];
+	abstract readonly httpDescription: HttpResponse['description'];
+
 	get httpMessage() {
 		return formatErrorMessage(this.httpName, this.httpDescription);
 	}
@@ -316,7 +329,10 @@ export abstract class InitializationError extends Error {}
 export class MissingEnvironmentVariableError extends InitializationError {
 	name = 'MissingEnvironmentVariableError' as const;
 
-	constructor(public readonly envVar: Uppercase<string>, public readonly effect?: string) {
+	constructor(
+		public readonly envVar: Uppercase<string>,
+		public readonly effect?: string
+	) {
 		super(`Missing environment variable: ${envVar} - ${effect}`);
 	}
 }

@@ -1,15 +1,10 @@
+import type { ArrayElement, NonEmptyArray } from '@navio-dk/ts-utils';
+import type { ValidationError } from 'elysia';
+import type { HttpError } from './errors.ts';
+
 import { consola, createConsola } from 'consola';
 import { colorize } from 'consola/utils';
-import type { HttpError } from './errors';
-import {
-	isElysiaValidationError,
-	isError,
-	isErrorOfType,
-	isHttpError,
-	hasDetails,
-} from './assertions';
-import type { NonEmptyArray, ArrayElement } from '@navio-dk/ts-utils';
-import type { ValidationError } from 'elysia';
+import { hasDetails, isElysiaValidationError, isError, isErrorOfType, isHttpError } from './assertions.ts';
 
 const consolaNoDate = createConsola({
 	formatOptions: {
@@ -25,44 +20,43 @@ Calling this with only first argument will return [data, undefined] if no error 
 Calling this with two args will return [data, undefined] if no error is thrown or [undefined, errortype] if error is thrown and it is of a type included in the second argument.
 Calling this with two args will throw error if error is thrown and it is not of a type included in the second argument.
 */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function catchError<T, E extends NonEmptyArray<new (...args: any[]) => Error> | undefined>(promise: Promise<T>, errorsToCatch?: E): Promise<[T, undefined] | [undefined, E extends undefined ? unknown : InstanceType<ArrayElement<E>>]> {
-	return promise.then((data): [T, undefined] =>
-		[ data, undefined ])
-		// eslint-disable-next-line @typescript-eslint/use-unknown-in-catch-callback-variable -- returntype is hard to type with .some etc, but at least the inputs and outputs match
-		.catch((error) => {
-			if (!errorsToCatch) {
-				return [ undefined, error ];
-			}
-		
-			if (errorsToCatch.some(e => isErrorOfType(error, e))) {
-				return [ undefined, error ];
-			}
+// biome-ignore lint/suspicious/noExplicitAny: this is how Error constructors are actually typed
+export function catchError<T, E extends NonEmptyArray<new (...args: any[]) => Error> | undefined>(
+	promise: Promise<T>,
+	errorsToCatch?: E
+): Promise<[T, undefined] | [undefined, E extends undefined ? unknown : InstanceType<ArrayElement<E>>]> {
+	return (
+		promise
+			.then((data): [T, undefined] => [data, undefined])
+			// returntype is hard to type with .some etc, but at least the inputs and outputs match
+			.catch(error => {
+				if (!errorsToCatch) {
+					return [undefined, error];
+				}
 
-			throw error;
-		});
-}
+				if (errorsToCatch.some(e => isErrorOfType(error, e))) {
+					return [undefined, error];
+				}
 
-export function formatErrorMessage(name: string, desc: string) {
-	return `${name}: ${desc}`;
+				throw error;
+			})
+	);
 }
 
 function buildErrorObject(error: unknown): Record<string, unknown> {
 	// Handle non-Error objects
 	if (!isError(error)) {
 		return {
-			timestamp: new Date()
-				.toISOString(),
+			timestamp: new Date().toISOString(),
 			type: 'unknown',
-			value: String(error)
+			value: String(error),
 		};
 	}
 
 	const errorObj: Record<string, unknown> = {
-		timestamp: new Date()
-			.toISOString(),
+		timestamp: new Date().toISOString(),
 		name: error.name,
-		message: error.message
+		message: error.message,
 	};
 
 	// Add stack trace if available
@@ -75,6 +69,9 @@ function buildErrorObject(error: unknown): Record<string, unknown> {
 		errorObj.statusCode = error.statusCode;
 		errorObj.httpName = error.httpName;
 		errorObj.httpDescription = error.httpDescription;
+		if (error.code !== undefined) {
+			errorObj.code = error.code;
+		}
 	}
 
 	// Add JSONLoggableError details (renamed from loggerDetails)
@@ -103,7 +100,7 @@ function logErrorAsJson(error: unknown): void {
 
 	// Use console.log to bypass consola (no colors, no timestamp)
 	// JSON.stringify produces single-line output by default
-	// eslint-disable-next-line no-console
+	// biome-ignore lint/suspicious/noConsole: deliberate consola bypass for single-line JSON logs
 	console.log(JSON.stringify(errorObj));
 }
 
@@ -117,15 +114,15 @@ export function logTraceableError(error: unknown, opts?: { jsonLoggable: boolean
 	logError(error);
 
 	if (isError(error) && error.cause) {
-		// eslint-disable-next-line no-console
-		console.log(); // Single newline before CAUSED BY
-		// eslint-disable-next-line no-console
+		// biome-ignore lint/suspicious/noConsole: deliberate consola bypass — single newline before CAUSED BY
+		console.log();
+		// biome-ignore lint/suspicious/noConsole: deliberate consola bypass
 		console.debug(colorize('black', colorize('bgCyan', ' CAUSED BY ')));
 
 		logTraceableError(error.cause);
 	} else {
-		// eslint-disable-next-line no-console
-		console.log(); // Single newline to separate errors more clearly
+		// biome-ignore lint/suspicious/noConsole: deliberate consola bypass — single newline to separate errors more clearly
+		console.log();
 	}
 }
 
@@ -142,7 +139,7 @@ function logError(error: unknown) {
 }
 
 function logHttpError(error: HttpError) {
-	consola.error(error.name, colorize('bold', error.statusCode) + ':', error);
+	consola.error(error.name, `${colorize('bold', error.statusCode)}:`, error);
 
 	// Log details if present (without extra newlines)
 	if (hasDetails(error)) {
@@ -151,11 +148,11 @@ function logHttpError(error: HttpError) {
 }
 
 function logElysiaValidationError(error: ValidationError) {
-	consola.error('Elysia ValidationError', colorize('bold', error.status) + ':', error);
+	consola.error('Elysia ValidationError', `${colorize('bold', error.status)}:`, error);
 }
 
 function logBuiltinError(error: Error) {
-	consola.error(error.name + ':', error);
+	consola.error(`${error.name}:`, error);
 
 	// Log details if present (without extra newlines)
 	if (hasDetails(error)) {
