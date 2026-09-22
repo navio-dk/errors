@@ -1,4 +1,4 @@
-import type { ValidationError } from 'elysia';
+import type { NotFoundError, ValidationError } from 'elysia';
 
 import { HttpError, InitializationError, JSONLoggableError } from './errors.ts';
 
@@ -22,6 +22,10 @@ export function isHttpError(error: unknown): error is HttpError {
 
 export function isElysiaValidationError(error: unknown): error is ValidationError {
 	return isObject(error) && 'code' in error && error.code === 'VALIDATION';
+}
+
+export function isElysiaNotFoundError(error: unknown): error is NotFoundError {
+	return isObject(error) && 'code' in error && error.code === 'NOT_FOUND';
 }
 
 export function isInitializationError(error: unknown): error is InitializationError {

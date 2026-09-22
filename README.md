@@ -76,6 +76,8 @@ const app = new Elysia()
 
 `.onError(createErrorHandler())` will catch any thrown errors and log them using `logTraceableError`. This will make errors prettier, easier to grok and also log all wrapped errors. The handler also makes sure to send a fitting message and status code to the client.
 
+The one error it does not log is Elysia's own `NOT_FOUND`: a request for a route that does not exist answers `404` and is passed over silently, so a public service does not file every stray request as a server error.
+
 Setting `enableJsonLogging` to `true` will format errors in one line of stringified JSON, perfect for console scrapers such as Loki.
 
 ## Utilities
