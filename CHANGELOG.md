@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.2.0](https://github.com/navio-dk/errors/compare/v4.1.0...v4.2.0) (2026-09-22)
+
+
+### Features
+
+* handle ElysiaNotFoundError ([ca0244a](https://github.com/navio-dk/errors/commit/ca0244a58b44e4c0b80cc8e38544b48e2eef9f1c))
+
 ## [4.1.1](https://github.com/navio-dk/errors/compare/v4.1.0...v4.1.1) (2026-09-22)
 
 ## [4.1.0](https://github.com/navio-dk/errors/compare/v4.0.1...v4.1.0) (2026-06-12)
